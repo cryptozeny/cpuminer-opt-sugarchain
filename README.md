@@ -122,6 +122,7 @@ Supported Algorithms
                           yescryptr8    BitZeny (ZNY)
                           yescryptr16   Yenten (YTN)
                           yescryptr32   WAVI
+                          yespower      Bellcoin (BELL), Cryply (CRP)
                           zr5           Ziftr
 
 Errata
@@ -156,11 +157,8 @@ Donations
 
 cpuminer-opt has no fees of any kind but donations are accepted.
 
- BTC: 12tdvfF7KmAsihBXQXynT6E6th2c2pByTT
- ETH: 0x72122edabcae9d3f57eab0729305a425f6fef6d0
- LTC: LdUwoHJnux9r9EKqFWNvAi45kQompHk6e8
- BCH: 1QKYkB6atn4P7RFozyziAXLEnurwnUM1cQ
- BTG: GVUyECtRHeC5D58z9F3nGGfVQndwnsPnHQ
+ BTC: 3A4tmufE1PGs3J6o3jNsUsvSP4DXEpkUMm
+ ETH: 0x3D611f37ec87e7e6150458E5DE802c2fa7dCef4a
 
 Happy mining!
 

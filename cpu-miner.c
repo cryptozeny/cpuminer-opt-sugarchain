@@ -4,6 +4,7 @@
  * Copyright 2014 Lucas Jones
  * Copyright 2014 Tanguy Pruvot
  * Copyright 2016 Jay D Dee
+ * Copyright 2018 Kikyou Akino
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -2995,10 +2996,20 @@ static int thread_create(struct thr_info *thr, void* func)
 
 static void show_credits()
 {
-   printf("\n         **********  "PACKAGE_NAME" "PACKAGE_VERSION"  *********** \n");
-   printf("     A CPU miner with multi algo support and optimized for CPUs\n");
-   printf("     with AES_NI and AVX2 and SHA extensions.\n");
-   printf("     BTC donation address: 12tdvfF7KmAsihBXQXynT6E6th2c2pByTT\n\n");
+    if ( use_colors ) {
+        printf("\n         **********  "CL_CYN PACKAGE_NAME" "PACKAGE_VERSION CL_N"  *********** \n");
+    } else {
+        printf("\n         **********  "PACKAGE_NAME" "PACKAGE_VERSION"  *********** \n");
+    }
+
+        printf("     A CPU miner with multi algo support and optimized for CPUs\n");
+        printf("     with AES_NI and AVX2 and SHA extensions.\n");
+
+    if ( use_colors ) {
+        printf("     BTC donation address: "CL_MAG"3A4tmufE1PGs3J6o3jNsUsvSP4DXEpkUMm"CL_N"\n\n");
+    } else {
+        printf("     BTC donation address: 3A4tmufE1PGs3J6o3jNsUsvSP4DXEpkUMm\n\n");
+    }
 }
 
 bool check_cpu_capability ()
