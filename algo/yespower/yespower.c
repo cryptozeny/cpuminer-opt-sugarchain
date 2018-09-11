@@ -30,10 +30,55 @@
 
 #include "algo-gate-api.h"
 
+enum YespowerParamsType {
+    YESPOWER_PARAMS_BELLCOIN,
+    YESPOWER_PARAMS_BITZENY,
+    YESPOWER_PARAMS_YENTEN,
+    YESPOWER_PARAMS_JAGARICOIN,
+    YESPOWER_PARAMS_WAVI,
+};
+
+enum YespowerParamsType paramsType = YESPOWER_PARAMS_BELLCOIN;
+
 void yespower_hash( const char *input, char *output, uint32_t len )
 {
-	static const yespower_params_t params = {YESPOWER_1_0, 2048, 32, NULL, 0};
-	yespower_tls( (yespower_binary_t*)input, len, &params, (yespower_binary_t*)output ); 
+    static yespower_params_t params = {YESPOWER_1_0, 2048, 32, NULL, 0};
+
+    switch (paramsType) {
+        case YESPOWER_PARAMS_BELLCOIN:
+            break;
+        case YESPOWER_PARAMS_BITZENY:
+            params.version = YESPOWER_0_5;
+            params.N = 2048;
+            params.r = 8;
+            params.pers = "Client Key";
+            params.perslen = 10;
+            break;
+        case YESPOWER_PARAMS_YENTEN:
+            params.version = YESPOWER_0_5;
+            params.N = 4096;
+            params.r = 16;
+            params.pers = "Client Key";
+            params.perslen = 10;
+            break;
+        case YESPOWER_PARAMS_JAGARICOIN:
+            params.version = YESPOWER_0_5;
+            params.N = 4096;
+            params.r = 24;
+            params.pers = "JagaricoinR";
+            params.perslen = 10;
+            break;
+        case YESPOWER_PARAMS_WAVI:
+            params.version = YESPOWER_0_5;
+            params.N = 4096;
+            params.r = 32;
+            params.pers = "WaviBanana";
+            params.perslen = 10;
+            break;
+        default:
+            break;
+    }
+    yespower_tls( (yespower_binary_t*)input, len, &params, (yespower_binary_t*)output );
 }
 
 int scanhash_yespower( int thr_id, struct work *work, uint32_t max_nonce,
@@ -83,3 +128,27 @@ bool register_yespower_algo( algo_gate_t* gate )
   gate->set_target    = (void*)&scrypt_set_target;
   return true;
 };
+
+bool register_yespowerr8_algo( algo_gate_t* gate )
+{
+    paramsType = YESPOWER_PARAMS_BITZENY;
+    return register_yespower_algo(gate);
+}
+
+bool register_yespowerr16_algo( algo_gate_t* gate )
+{
+    paramsType = YESPOWER_PARAMS_YENTEN;
+    return register_yespower_algo(gate);
+}
+
+bool register_yespowerr24_algo( algo_gate_t* gate )
+{
+    paramsType = YESPOWER_PARAMS_JAGARICOIN;
+    return register_yespower_algo(gate);
+}
+
+bool register_yespowerr32_algo( algo_gate_t* gate )
+{
+    paramsType = YESPOWER_PARAMS_WAVI;
+    return register_yespower_algo(gate);
+}

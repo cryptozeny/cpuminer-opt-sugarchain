@@ -469,6 +469,18 @@ bool register_yescryptr16_algo( algo_gate_t* gate )
    return true;
 }
 
+bool register_yescryptr24_algo( algo_gate_t* gate )
+{
+   yescrypt_gate_base( gate );
+   gate->get_max64  = (void*)&yescryptr16_get_max64;
+   yescrypt_client_key = "JagaricoinR";
+   yescrypt_client_key_len = 10;
+   YESCRYPT_N = 4096;
+   YESCRYPT_R = 24;
+   YESCRYPT_P = 1;
+   return true;
+}
+
 bool register_yescryptr32_algo( algo_gate_t* gate )
 {
    yescrypt_gate_base( gate );

@@ -159,6 +159,18 @@ Support for even older x86_64 without AES_NI or SSE2 is not availble.
 Change Log
 ----------
 
+v3.8.10-bf
+
+Added:
+  yescryptr24 algo for JagaricoinR,
+  yespowerr8  algo for BitZeny,
+  yespowerr16 algo for Yenten,
+  yespowerr24 algo for JagaricoinR,
+  yescryptr32 algo for Wavi.
+  alias bellcoin and cryply.
+Fixed:
+  alias bitzeny, yenten, and wavi.
+
 v3.8.9-bf
 
 Added yespower for Bellcoin and Cryply.

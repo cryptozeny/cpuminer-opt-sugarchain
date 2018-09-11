@@ -232,8 +232,13 @@ bool register_algo_gate( int algo, algo_gate_t *gate )
      case ALGO_YESCRYPT:     register_yescrypt_algo     ( gate ); break;
      case ALGO_YESCRYPTR8:   register_yescryptr8_algo   ( gate ); break;
      case ALGO_YESCRYPTR16:  register_yescryptr16_algo  ( gate ); break;
+     case ALGO_YESCRYPTR24:  register_yescryptr24_algo  ( gate ); break;
      case ALGO_YESCRYPTR32:  register_yescryptr32_algo  ( gate ); break;
      case ALGO_YESPOWER:     register_yespower_algo     ( gate ); break;
+     case ALGO_YESPOWERR8:   register_yespowerr8_algo   ( gate ); break;
+     case ALGO_YESPOWERR16:  register_yespowerr16_algo  ( gate ); break;
+     case ALGO_YESPOWERR24:  register_yespowerr24_algo  ( gate ); break;
+     case ALGO_YESPOWERR32:  register_yespowerr32_algo  ( gate ); break;
      case ALGO_ZR5:          register_zr5_algo          ( gate ); break;
     default:
         applog(LOG_ERR,"FAIL: algo_gate registration failed, unknown algo %s.\n", algo_names[opt_algo] );
@@ -294,12 +299,14 @@ const char* const algo_alias_map[][2] =
   { "argon2d-crds",      "argon2d250"   },
   { "argon2d-dyn",       "argon2d500"   },
   { "argon2d-uis",       "argon2d4096"  },
+  { "bellcoin",          "yespower"     },
   { "bitcore",           "timetravel10" },
-  { "bitzeny",           "yescryptr8"   },
+  { "bitzeny",           "yespowerr8"   },
   { "blake256r8",        "blakecoin"    },
   { "blake256r8vnl",     "vanilla"      },
   { "blake256r14",       "blake"        },
   { "blake256r14dcr",    "decred"       },
+  { "cryply",            "yespower"     },
   { "cryptonote",        "cryptonight"  },
   { "cryptonight-light", "cryptolight"  },
   { "diamond",           "dmd-gr"       },
@@ -308,6 +315,7 @@ const char* const algo_alias_map[][2] =
   { "flax",              "c11"          },
   { "hsr",               "x13sm3"       },
   { "jackpot",           "jha"          },
+  { "jagaricoinr",       "yespowerr24"  },
   { "jane",              "scryptjane"   }, 
   { "lyra2",             "lyra2re"      },
   { "lyra2v2",           "lyra2rev2"    },
@@ -319,10 +327,11 @@ const char* const algo_alias_map[][2] =
 //  { "sia",               "blake2b"      },
   { "sib",               "x11gost"      },
   { "timetravel8",       "timetravel"   },
-  { "ziftr",             "zr5"          },
-  { "yenten",            "yescryptr16"  },
+  { "wavi",              "yespowerr32"  },
+  { "yenten",            "yespowerr16"  },
   { "yescryptr8k",       "yescrypt"     },
   { "zcoin",             "lyra2z"       },
+  { "ziftr",             "zr5"          },
   { "zoin",              "lyra2z330"    },
   { NULL,                NULL           }   
 };
