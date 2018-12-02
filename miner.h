@@ -796,7 +796,7 @@ Options:\n\
                           yescryptr16   Yenten (YTN)\n\
                           yescryptr24   JagaricoinR (JAGAR)\n\
                           yescryptr32   WAVI\n\
-                          yespower      Bellcoin (BELL), Cryply (CRP)\n\
+                          yespower      Sugarchain (SUGAR), Bellcoin (BELL), Cryply (CRP)\n\
                           yespowerr8    BitZeny (ZNY)\n\
                           yespowerr16   Yenten (YTN)\n\
                           yespowerr24   JagaricoinR (JAGAR)\n\
@@ -917,4 +917,3 @@ static struct option const options[] = {
 
 
 #endif /* __MINER_H__ */
-

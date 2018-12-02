@@ -5,6 +5,7 @@
  * Copyright 2014 Tanguy Pruvot
  * Copyright 2016 Jay D Dee
  * Copyright 2018 Kikyou Akino
+ * Copyright 2018 cryptozeny
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -3011,9 +3012,9 @@ static void show_credits()
         printf("     with AES_NI and AVX2 and SHA extensions.\n");
 
     if ( use_colors ) {
-        printf("     BTC donation address: "CL_MAG"3A4tmufE1PGs3J6o3jNsUsvSP4DXEpkUMm"CL_N"\n\n");
+        printf("     BTC donation address: "CL_MAG"31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe"CL_N"\n\n");
     } else {
-        printf("     BTC donation address: 3A4tmufE1PGs3J6o3jNsUsvSP4DXEpkUMm\n\n");
+        printf("     BTC donation address: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe\n\n");
     }
 }
 

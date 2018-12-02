@@ -159,6 +159,14 @@ Support for even older x86_64 without AES_NI or SSE2 is not availble.
 Change Log
 ----------
 
+v3.8.11-sugar
+
+Added:
+  yespower for Sugarchain.
+
+Fixed:
+  Fix construction of BIP34 coinbase.
+
 v3.8.10-bf
 
 Added:
@@ -632,4 +640,3 @@ AVX2 optimizations improving many algos:
    - x15 +2.4%
    - x17 +2.8%
    - qubit +8.4%
-
