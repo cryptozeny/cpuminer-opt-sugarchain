@@ -31,21 +31,21 @@
 #include "algo-gate-api.h"
 
 enum YespowerParamsType {
-    YESPOWER_PARAMS_BELLCOIN,
+    YESPOWER_PARAMS_SUGARCHAIN,
     YESPOWER_PARAMS_BITZENY,
     YESPOWER_PARAMS_YENTEN,
     YESPOWER_PARAMS_JAGARICOIN,
     YESPOWER_PARAMS_WAVI,
 };
 
-enum YespowerParamsType paramsType = YESPOWER_PARAMS_BELLCOIN;
+enum YespowerParamsType paramsType = YESPOWER_PARAMS_SUGARCHAIN;
 
 void yespower_hash( const char *input, char *output, uint32_t len )
 {
     static yespower_params_t params = {YESPOWER_1_0, 2048, 32, NULL, 0};
 
     switch (paramsType) {
-        case YESPOWER_PARAMS_BELLCOIN:
+        case YESPOWER_PARAMS_SUGARCHAIN:
             break;
         case YESPOWER_PARAMS_BITZENY:
             params.version = YESPOWER_0_5;
