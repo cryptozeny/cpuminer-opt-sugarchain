@@ -296,17 +296,16 @@ void exec_hash_function( int algo, void *output, const void *pdata )
 const char* const algo_alias_map[][2] =
 {
 //   alias                proper
+  { "sugarchain",        "yespower"     },
   { "argon2d-crds",      "argon2d250"   },
   { "argon2d-dyn",       "argon2d500"   },
   { "argon2d-uis",       "argon2d4096"  },
-  { "bellcoin",          "yespower"     },
   { "bitcore",           "timetravel10" },
   { "bitzeny",           "yespowerr8"   },
   { "blake256r8",        "blakecoin"    },
   { "blake256r8vnl",     "vanilla"      },
   { "blake256r14",       "blake"        },
   { "blake256r14dcr",    "decred"       },
-  { "cryply",            "yespower"     },
   { "cryptonote",        "cryptonight"  },
   { "cryptonight-light", "cryptolight"  },
   { "diamond",           "dmd-gr"       },
@@ -350,4 +349,3 @@ void get_algo_alias( char** algo_or_alias )
       return;
     }
 }
-
