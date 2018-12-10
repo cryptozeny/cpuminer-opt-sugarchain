@@ -123,7 +123,7 @@ Supported Algorithms
                           yescryptr16   Yenten (YTN)
                           yescryptr24   JagaricoinR (JAGAR)
                           yescryptr32   WAVI
-                          yespower      Sugarchain (SUGAR), Bellcoin (BELL), Cryply (CRP)
+                          yespower      Sugarchain (SUGAR)
                           yespowerr8    BitZeny (ZNY)
                           yespowerr16   Yenten (YTN)
                           yespowerr24   JagaricoinR (JAGAR)
