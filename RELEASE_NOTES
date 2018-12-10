@@ -159,12 +159,12 @@ Support for even older x86_64 without AES_NI or SSE2 is not availble.
 Change Log
 ----------
 
-v3.8.12-sugarchain
+v3.8.8.1.4-sugarchain
 
 Added:
   Yespower Personality
 
-v3.8.11-sugar
+v3.8.8.1.3-sugarchain
 
 Added:
   yespower for Sugarchain.
@@ -172,7 +172,7 @@ Added:
 Fixed:
   Fix construction of BIP34 coinbase.
 
-v3.8.10-bf
+v3.8.8.1.2-bf
 
 Added:
   yescryptr24 algo for JagaricoinR,
@@ -184,7 +184,7 @@ Added:
 Fixed:
   alias bitzeny, yenten, and wavi.
 
-v3.8.9-bf
+v3.8.8.1.1-bf
 
 Added yespower for Bellcoin and Cryply.
 
