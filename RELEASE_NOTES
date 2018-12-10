@@ -159,6 +159,11 @@ Support for even older x86_64 without AES_NI or SSE2 is not availble.
 Change Log
 ----------
 
+v3.8.12-sugarchain
+
+Added:
+  Yespower Personality
+
 v3.8.11-sugar
 
 Added:
