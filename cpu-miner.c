@@ -2439,7 +2439,7 @@ static void *stratum_thread(void *userdata )
                  if ( !opt_quiet )
                  {
                     if (net_diff > 0.)
-	               applog(LOG_BLUE, "%s block %d, network diff %.3f",
+	               applog(LOG_BLUE, "%s block %d, network diff %.16g",
                            algo_names[opt_algo], stratum.bloc_height, net_diff);
                     else
 	               applog(LOG_BLUE, "%s %s block %d", short_url,
