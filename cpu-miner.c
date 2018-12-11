@@ -480,7 +480,8 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
       goto out;
    }
    work->height = (int) json_integer_value( tmp );
-   applog( LOG_BLUE, "Current block is %d", work->height );
+   applog( LOG_BLUE, "Current block is %d, network diff %.16g",
+            work->height, net_diff);
 
    tmp = json_object_get(val, "version");
    if ( !tmp || !json_is_integer( tmp ) )
@@ -2166,7 +2167,7 @@ start:
 	       char netinfo[64] = { 0 };
 	       if (net_diff > 0.)
                {
-                sprintf(netinfo, ", diff %.16g", net_diff);
+                   sprintf(netinfo, ", diff %.16g", net_diff);
 	       }
 	       if (opt_showdiff)
 	 	 sprintf( &netinfo[strlen(netinfo)], ", target %.3f",
