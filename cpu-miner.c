@@ -2166,7 +2166,7 @@ start:
 	       char netinfo[64] = { 0 };
 	       if (net_diff > 0.)
                {
-	 	 sprintf(netinfo, ", diff %.3f", net_diff);
+                sprintf(netinfo, ", diff %.16g", net_diff);
 	       }
 	       if (opt_showdiff)
 	 	 sprintf( &netinfo[strlen(netinfo)], ", target %.3f",
