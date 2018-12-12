@@ -480,7 +480,7 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
       goto out;
    }
    work->height = (int) json_integer_value( tmp );
-   applog( LOG_BLUE, "Current block is %d, network diff %.16g",
+   applog( LOG_BLUE, "Current block %d, net_diff %.16g",
             work->height, net_diff);
 
    tmp = json_object_get(val, "version");
@@ -2440,7 +2440,7 @@ static void *stratum_thread(void *userdata )
                  if ( !opt_quiet )
                  {
                     if (net_diff > 0.)
-	               applog(LOG_BLUE, "%s block %d, network diff %.16g",
+	               applog(LOG_BLUE, "%s block %d, net_diff %.16g",
                            algo_names[opt_algo], stratum.bloc_height, net_diff);
                     else
 	               applog(LOG_BLUE, "%s %s block %d", short_url,
