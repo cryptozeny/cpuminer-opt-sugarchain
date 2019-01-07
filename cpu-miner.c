@@ -2170,7 +2170,7 @@ start:
                    sprintf(netinfo, ", diff %.16g", net_diff);
 	       }
 	       if (opt_showdiff)
-	 	 sprintf( &netinfo[strlen(netinfo)], ", target %.3f",
+	 	 sprintf( &netinfo[strlen(netinfo)], ", target %.16g",
                           g_work.targetdiff );
                applog(LOG_BLUE, "%s detected new block%s", short_url, netinfo);
 	     }
