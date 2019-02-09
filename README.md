@@ -1,3 +1,17 @@
+# Install
+
+Ubuntu 16.04
+```bash
+sudo apt-get install -y \
+build-essential libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev automake zlib1g-dev && \
+git clone git@github.com:cryptozeny/cpuminer-opt-sugarchain.git && \
+cd cpuminer-opt-sugarchain && \
+./build.sh && \
+./cpuminer --help
+```
+
+# README
+
 cpuminer-opt is a fork of cpuminer-multi by TPruvot with optimizations
 imported from other miners developped by lucas Jones, djm34, Wolf0, pooler,
 Jeff garzik, ig0tik3d, elmad, palmd, and Optiminer, with additional
@@ -8,8 +22,8 @@ claim to any of it post your case in the cpuminer-opt Bitcoin Talk forum
 or by email.
 
 Miner programs are often flagged as malware by antivirus programs. This is
-a false positive, they are flagged simply because they are cryptocurrency 
-miners. The source code is open for anyone to inspect. If you don't trust 
+a false positive, they are flagged simply because they are cryptocurrency
+miners. The source code is open for anyone to inspect. If you don't trust
 the software, don't use it.
 
 https://bitcointalk.org/index.php?topic=1326803.0
@@ -35,7 +49,7 @@ ARM CPUs are not supported.
 2. 64 bit Linux OS. Ubuntu and Fedora based distributions, including Mint and
 Centos, are known to work and have all dependencies in their repositories.
 Others may work but may require more effort. Older versions such as Centos 6
-don't work due to missing features. 
+don't work due to missing features.
 64 bit Windows OS is supported with mingw_w64 and msys or pre-built binaries.
 
 MacOS, OSx and Android are not supported.
