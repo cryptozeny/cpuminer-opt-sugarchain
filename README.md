@@ -10,6 +10,17 @@ cd cpuminer-opt-sugarchain && \
 ./cpuminer --help
 ```
 
+# Run
+ * Mining Pool - `-t1` using 1 thread.  
+```
+./cpuminer -a yespower -o stratum+tcp://207.148.104.180:3333 -u TiZ5sCiGhmJs5Tb6EDn97dNoQCZhvDmAF5 -t1
+```
+
+ * Solo - `17978` is testnet. `-u` and `-p` is on the coind.  
+```
+./cpuminer -a yespower -o http://localhost:17978 -u username -p password --coinbase-addr=Tpoya47NhFzRdumE3cbqsJAz33eLkMNEfJ -t1
+```
+ 
 # README
 
 cpuminer-opt is a fork of cpuminer-multi by TPruvot with optimizations
