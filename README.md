@@ -7,7 +7,7 @@ build-essential libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev automa
 git clone git@github.com:cryptozeny/cpuminer-opt-sugarchain.git && \
 cd cpuminer-opt-sugarchain && \
 ./build.sh && \
-./cpuminer --help
+./cpuminer --cputest
 ```
 
 # Run
@@ -20,7 +20,11 @@ cd cpuminer-opt-sugarchain && \
 ```
 ./cpuminer -a yespower -o http://localhost:17978 -u username -p password --coinbase-addr=Tpoya47NhFzRdumE3cbqsJAz33eLkMNEfJ -t1
 ```
- 
+
+ * Screenshot
+
+![screenshot-cpuminer.png](https://github.com/cryptozeny/cpuminer-opt-sugarchain/blob/master/res/screenshot-cpuminer.png?raw=true)
+
 # README
 
 cpuminer-opt is a fork of cpuminer-multi by TPruvot with optimizations
