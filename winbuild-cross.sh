@@ -21,27 +21,27 @@ make distclean || echo clean
 rm -f config.status
 ./autogen.sh || echo done
 CFLAGS="-O3 -march=core-avx2 -msha -Wall" ./configure $F
-make 
+make -j$(nproc)
 strip -s cpuminer.exe
 mv cpuminer.exe release/cpuminer-avx2-sha.exe
 
 #make clean || echo clean
 #CFLAGS="-O3 -march=corei7-avx -msha -Wall" ./configure $F
-#make
+#make -j$(nproc)
 #strip -s cpuminer.exe
 #mv cpuminer.exe release/cpuminer-avx-sha.exe
 
 make clean || echo clean
 rm -f config.status
 CFLAGS="-O3 -march=core-avx2 -Wall" ./configure $F 
-make 
+make -j$(nproc)
 strip -s cpuminer.exe
 mv cpuminer.exe release/cpuminer-avx2.exe
 
 #make clean || echo clean
 #rm -f config.status
 #CFLAGS="-O3 -march=znver1 -Wall" ./configure $F
-#make -j 
+#make -j$(nproc)
 #strip -s cpuminer.exe
 #mv cpuminer.exe release/cpuminer-aes-sha.exe
 
@@ -49,7 +49,7 @@ mv cpuminer.exe release/cpuminer-avx2.exe
 make clean || echo clean
 rm -f config.status
 CFLAGS="-O3 -march=corei7-avx -Wall" ./configure $F 
-make 
+make -j$(nproc)
 strip -s cpuminer.exe
 mv cpuminer.exe release/cpuminer-avx.exe
 
@@ -58,21 +58,21 @@ make clean || echo clean
 rm -f config.status
 CFLAGS="-O3 -march=westmere -Wall" ./configure $F
 #CFLAGS="-O3 -maes -msse4.2 -Wall" ./configure $F
-make 
+make -j$(nproc)
 strip -s cpuminer.exe
 mv cpuminer.exe release/cpuminer-aes-sse42.exe
 
 #make clean || echo clean
 #rm -f config.status
 #CFLAGS="-O3 -march=corei7 -Wall" ./configure $F
-#make 
+#make -j$(nproc)
 #strip -s cpuminer.exe
 #mv cpuminer.exe release/cpuminer-sse42.exe
 
 #make clean || echo clean
 #rm -f config.status
 #CFLAGS="-O3 -march=core2 -Wall" ./configure $F
-#make 
+#make -j$(nproc)
 #strip -s cpuminer.exe
 #mv cpuminer.exe release/cpuminer-ssse3.exe
 #make clean || echo clean
@@ -80,7 +80,7 @@ mv cpuminer.exe release/cpuminer-aes-sse42.exe
 make clean || echo clean
 rm -f config.status
 CFLAGS="-O3 -msse2 -Wall" ./configure $F
-make
+make -j$(nproc)
 strip -s cpuminer.exe
 mv cpuminer.exe release/cpuminer-sse2.exe
 make clean || echo clean
