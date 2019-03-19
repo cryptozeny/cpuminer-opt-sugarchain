@@ -12,8 +12,7 @@ DLL_PATH="-I$LOCAL_LIB/dll"
 # F="--with-curl=$LOCAL_LIB/curl --with-crypto=$LOCAL_LIB/openssl --host=x86_64-w64-mingw32"
 F="--with-curl=$LOCAL_LIB/curl-7.47.0 --with-crypto=$LOCAL_LIB/openssl-1.0.2g --host=x86_64-w64-mingw32"
 
-# NOT USE
-# sed -i 's/"-lpthread"/"-lpthreadGC2"/g' configure.ac
+sed -i 's#"-lpthread"#"-lpthreadGC2"#g' configure.ac
 
 YESPOWER="-Wall -O2 -fomit-frame-pointer"
 SSE2="-msse2"
@@ -76,3 +75,7 @@ mv cpuminer.exe release/cpuminer.exe
 # strip -s cpuminer.exe
 # mv cpuminer.exe release/cpuminer-sse2.exe
 # make clean || echo clean
+
+# RESTORE after build
+git checkout -- configure.ac
+git checkout -- configure
