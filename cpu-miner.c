@@ -3074,7 +3074,7 @@ bool check_cpu_capability ()
      #endif
 
      cpu_brand_string( cpu_brand );
-     printf( "CPU: %s\n", cpu_brand );
+     printf( "CPU: %s.\n", cpu_brand );
      
      printf("SW built on " __DATE__
      #ifdef _MSC_VER
