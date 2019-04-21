@@ -3013,7 +3013,7 @@ static void show_credits()
         printf("     with AES_NI and AVX2 and SHA extensions.\n");
 
     if ( use_colors ) {
-        printf("     BTC donation address: "CL_MAG"31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe"CL_N"\n\n");
+        printf("     BTC donation address: "CL_CYN"31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe"CL_N"\n\n");
     } else {
         printf("     BTC donation address: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe\n\n");
     }
