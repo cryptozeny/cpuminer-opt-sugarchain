@@ -3074,16 +3074,16 @@ bool check_cpu_capability ()
      #endif
 
      cpu_brand_string( cpu_brand );
-     printf( "CPU: %s.\n", cpu_brand );
+     printf( "CPU: %s\n", cpu_brand );
      
      printf("SW built on " __DATE__
      #ifdef _MSC_VER
          " with VC++ 2013\n");
      #elif defined(__GNUC__)
          " with GCC");
-        printf(" %d.%d.%d.\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+        printf(" %d.%d.%d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
      #else
-        printf(".\n");
+        printf("\n");
      #endif
 
      printf("CPU features:");
@@ -3095,7 +3095,7 @@ bool check_cpu_capability ()
      if ( cpu_has_avx512 )    printf( " AVX512" );
      if ( cpu_has_sha    )    printf( " SHA"    );
 
-     printf(".\nSW features: SSE2");
+     printf("\nSW features: SSE2");
      if ( sw_has_aes    )     printf( " AES"    );
      if ( sw_has_sse42  )     printf( " SSE4.2" );
      if ( sw_has_avx    )     printf( " AVX"    );
@@ -3104,7 +3104,7 @@ bool check_cpu_capability ()
      if ( sw_has_sha    )     printf( " SHA"    );
     
 
-     printf(".\nAlgo features:");
+     printf("\nAlgo features:");
      if ( algo_features == EMPTY_SET ) printf( " None" );
      else
      {
@@ -3115,7 +3115,7 @@ bool check_cpu_capability ()
         if ( algo_has_avx512 ) printf( " AVX512" );
         if ( algo_has_sha    ) printf( " SHA"    );
      }
-     printf(".\n");
+     printf("\n");
 
      // Check for CPU and build incompatibilities
      if ( !cpu_has_sse2 )
@@ -3166,7 +3166,7 @@ bool check_cpu_capability ()
         else if ( use_sse2   ) printf( " SSE2" );
         if      ( use_sha    ) printf( " SHA"  );
      }
-     printf( ".\n\n" );
+     printf( "\n\n" );
 
      return true;
 }
