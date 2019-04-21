@@ -189,7 +189,7 @@ output from the miner showing the startup and any errors.
 Donations
 ---------
 
-cpuminer-opt has no fees of any kind but donations are accepted.
+cpuminer-opt-sugarchain has no fees of any kind but donations are accepted.
 
  BTC: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe  
  ETH: 0x4c496e75bba93e084f54c56fd628539a8de7eba8  
