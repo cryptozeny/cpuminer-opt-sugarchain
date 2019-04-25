@@ -116,7 +116,7 @@ char *rpc_url = NULL;;
 char *rpc_userpass = NULL;
 char *rpc_user, *rpc_pass;
 char *short_url = NULL;
-static unsigned char pk_script[25] = { 0 };
+static unsigned char pk_script[42] = { 0 };
 static size_t pk_script_size = 0;
 static char coinbase_sig[101] = { 0 };
 char *opt_cert;
