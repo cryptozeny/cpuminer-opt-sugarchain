@@ -116,7 +116,12 @@ char *rpc_url = NULL;;
 char *rpc_userpass = NULL;
 char *rpc_user, *rpc_pass;
 char *short_url = NULL;
+
+// BEGIN - Add support for bech32 addresses (BIP 173)
+// https://github.com/pooler/cpuminer/blob/7e8960212f0055d6dafaa3c80812c50cec291de3/cpu-miner.c#L138
 static unsigned char pk_script[42] = { 0 };
+// END - Add support for bech32 addresses (BIP 173)
+
 static size_t pk_script_size = 0;
 static char coinbase_sig[101] = { 0 };
 char *opt_cert;

@@ -2,7 +2,7 @@
  * Copyright 2010 Jeff Garzik
  * Copyright 2012 Luke Dashjr
  * Copyright 2012-2014 pooler
- * Copyright 2017 Pieter Wuille
+ * Copyright 2017 Pieter Wuille // Add support for bech32 addresses (BIP 173)
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -811,6 +811,8 @@ static int b58check(unsigned char *bin, size_t binsz, const char *b58)
 	return bin[0];
 }
 
+// BEGIN - Add support for bech32 addresses (BIP 173)
+// https://github.com/pooler/cpuminer/blob/7e8960212f0055d6dafaa3c80812c50cec291de3/util.c#L663
 static uint32_t bech32_polymod_step(uint32_t pre) {
 	uint8_t b = pre >> 25;
 	return ((pre & 0x1FFFFFF) << 5) ^
@@ -940,6 +942,7 @@ static size_t bech32_to_script(uint8_t *out, size_t outsz, const char *addr) {
 	memcpy(out + 2, witprog, witprog_len);
 	return witprog_len + 2;
 }
+// END - Add support for bech32 addresses (BIP 173)
 
 bool jobj_binary(const json_t *obj, const char *key, void *buf, size_t buflen)
 {
@@ -969,7 +972,10 @@ size_t address_to_script(unsigned char *out, size_t outsz, const char *addr)
 	size_t rv;
 
 	if (!b58dec(addrbin, sizeof(addrbin), addr))
+		// BEGIN - Add support for bech32 addresses (BIP 173)
+		// https://github.com/pooler/cpuminer/blob/7e8960212f0055d6dafaa3c80812c50cec291de3/util.c#L800
 		return bech32_to_script(out, outsz, addr);
+		// END - Add support for bech32 addresses (BIP 173)
 	addrver = b58check(addrbin, sizeof(addrbin), addr);
 	if (addrver < 0)
 		return 0;
@@ -2469,4 +2475,3 @@ void print_hash_tests(void)
 
 	free(scratchbuf);
 }
-
