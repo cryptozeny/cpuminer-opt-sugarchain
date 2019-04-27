@@ -1200,18 +1200,12 @@ const char *getwork_req =
 
 #define GBT_CAPABILITIES "[\"coinbasetxn\", \"coinbasevalue\", \"longpoll\", \"workid\"]"
 
-// BEGIN - confirm bech32 TX on solo mining
-// https://askmona.org/4673?n=1000#res_211
-// by @okoto-xyz
 static const char *gbt_req =
 	"{\"method\": \"getblocktemplate\", \"params\": [{\"capabilities\": "
-  // GBT_CAPABILITIES "}], \"id\":0}\r\n";
-	GBT_CAPABILITIES ", \"rules\":[\"segwit\"]}], \"id\":0}\r\n"; // confirm bech32 TX on solo mining
+	GBT_CAPABILITIES "}], \"id\":0}\r\n";
 const char *gbt_lp_req =
 	"{\"method\": \"getblocktemplate\", \"params\": [{\"capabilities\": "
-  // GBT_CAPABILITIES ", \"longpollid\": \"%s\"}], \"id\":0}\r\n";
-	GBT_CAPABILITIES ", \"longpollid\": \"%s\", \"rules\":[\"segwit\"]}], \"id\":0}\r\n"; // confirm bech32 TX on solo mining
-// END - confirm bech32 TX on solo mining
+	GBT_CAPABILITIES ", \"longpollid\": \"%s\"}], \"id\":0}\r\n";
 
 static bool get_upstream_work( CURL *curl, struct work *work )
 {
