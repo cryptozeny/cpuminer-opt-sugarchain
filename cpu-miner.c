@@ -100,7 +100,6 @@ static int opt_fail_pause = 10;
 static int opt_time_limit = 0;
 int opt_timeout = 300;
 static int opt_scantime = 5;
-//static const bool opt_time = true; // Add basic Segwit support
 enum algos opt_algo = ALGO_NULL;
 int opt_scrypt_n = 0;
 int opt_pluck_n = 128;
@@ -440,10 +439,6 @@ static bool get_mininginfo(CURL *curl, struct work *work)
 	return true;
 }
 
-// hodl needs 4 but leave it at 3 until gbt better understood
-//#define BLOCK_VERSION_CURRENT 3
-// #define BLOCK_VERSION_CURRENT 4 // Add basic Segwit support
-
 static bool gbt_work_decode( const json_t *val, struct work *work )
 {
    int i, n;
@@ -457,13 +452,11 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
    uchar(*merkle_tree)[32] = NULL;
    bool coinbase_append = false;
    bool submit_coinbase = false;
-   // bool version_force = false; // Add basic Segwit support
-   // bool version_reduce = false; // Add basic Segwit support
    bool segwit = false; // Add basic Segwit support
    json_t *tmp, *txa;
    bool rc = false;
 
-   // Add basic Segwit support
+   // BEGIN - Add basic Segwit support
    tmp = json_object_get(val, "rules");
    if (tmp && json_is_array(tmp)) {
      n = json_array_size(tmp);
@@ -475,6 +468,7 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
        segwit = true;
      }
    }
+   // END - Add basic Segwit support
 
    tmp = json_object_get( val, "mutable" );
    if ( tmp && json_is_array( tmp ) )
@@ -487,8 +481,6 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
             continue;
          if      ( !strcmp( s, "coinbase/append" ) ) coinbase_append = true;
          else if ( !strcmp( s, "submit/coinbase" ) ) submit_coinbase = true;
-         // else if ( !strcmp( s, "version/force" ) )   version_force   = true; // Add basic Segwit support
-         // else if ( !strcmp( s, "version/reduce" ) )  version_reduce  = true; // Add basic Segwit support
       }
    }
 
@@ -509,27 +501,6 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
       goto out;
    }
    version = (uint32_t) json_integer_value( tmp );
-
-   // BEGIN - Add basic Segwit support
-   // if ( (version & 0xffU) > BLOCK_VERSION_CURRENT )
-   // {
-   //    if ( version_reduce )
-   //    {
-   //       version = ( version & ~0xffU ) | BLOCK_VERSION_CURRENT;
-   //    }
-   //    else if ( have_gbt && allow_getwork && !version_force )
-   //    {
-   //       applog( LOG_DEBUG, "Switching to getwork, gbt version %d", version );
-   //       have_gbt = false;
-   //       goto out;
-   //    }
-   //    else if ( !version_force )
-   //    {
-   //       applog(LOG_ERR, "Unrecognized block version: %u", version);
-   //       goto out;
-   //    }
-   // }
-   // END - Add basic Segwit support
 
    if ( unlikely( !jobj_binary(val, "previousblockhash", prevhash,
         sizeof(prevhash)) ) )
@@ -624,7 +595,7 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
         another zero byte to signal that the block height is a
         positive number.  */
 
-        // if (cbtx[cbtx_size - 1] & 0x80) {
+        // if (cbtx[cbtx_size - 1] & 0x80) { // old - Add basic Segwit support
         if (n < 0x100 && n >= 0x80) {
           cbtx[cbtx_size++] = 0;
         }
@@ -635,8 +606,9 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
       cbtx[41] = cbtx_size - 42; /* scriptsig length */
       le32enc( (uint32_t *)( cbtx+cbtx_size ), 0xffffffff ); /* sequence */
       cbtx_size += 4;
-      // cbtx[ cbtx_size++ ] = 1; /* out-counter */ // Add basic Segwit support
-      cbtx[cbtx_size++] = segwit ? 2 : 1; /* out-counter */
+
+      cbtx[cbtx_size++] = segwit ? 2 : 1; /* out-counter */ // Add basic Segwit support
+
       le32enc( (uint32_t *)( cbtx+cbtx_size) , (uint32_t)cbvalue ); /* value */
       le32enc( (uint32_t *)( cbtx+cbtx_size+4 ), cbvalue >> 32 );
       cbtx_size += 8;
@@ -755,16 +727,6 @@ static bool gbt_work_decode( const json_t *val, struct work *work )
       tmp = json_array_get( txa, i );
       const char *tx_hex = json_string_value( json_object_get( tmp, "data" ) );
       const int tx_size = tx_hex ? (int) ( strlen( tx_hex ) / 2 ) : 0;
-
-      // BEGIN - Add basic Segwit support
-      // unsigned char *tx = (uchar*) malloc( tx_size );
-      // if ( !tx_hex || !hex2bin( tx, tx_hex, tx_size ) )
-      // {
-      //    applog( LOG_ERR, "JSON invalid transactions" );
-      //    free( tx );
-      //    goto out;
-      // }
-      // END - Add basic Segwit support
 
       // BEGIN - Add basic Segwit support
       if (segwit) {
@@ -1291,11 +1253,9 @@ const char *getwork_req =
 
 static const char *gbt_req =
 	"{\"method\": \"getblocktemplate\", \"params\": [{\"capabilities\": "
-	// GBT_CAPABILITIES "}], \"id\":0}\r\n";
   GBT_CAPABILITIES ", \"rules\": " GBT_RULES "}], \"id\":0}\r\n"; // Add basic Segwit support
 const char *gbt_lp_req =
 	"{\"method\": \"getblocktemplate\", \"params\": [{\"capabilities\": "
-	// GBT_CAPABILITIES ", \"longpollid\": \"%s\"}], \"id\":0}\r\n";
   GBT_CAPABILITIES ", \"rules\": " GBT_RULES ", \"longpollid\": \"%s\"}], \"id\":0}\r\n"; // Add basic Segwit support
 
 static bool get_upstream_work( CURL *curl, struct work *work )
