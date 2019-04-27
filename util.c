@@ -669,6 +669,18 @@ err_out:
 	return cfg;
 }
 
+// BEGIN - Add basic Segwit support
+void memrev(unsigned char *p, size_t len)
+{
+	unsigned char c, *q;
+	for (q = p + len - 1; p < q; p++, q--) {
+		c = *p;
+		*p = *q;
+		*q = c;
+	}
+}
+// END - Add basic Segwit support
+
 void bin2hex(char *s, const unsigned char *p, size_t len)
 {
 	for (size_t i = 0; i < len; i++)
