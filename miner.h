@@ -428,6 +428,9 @@ extern char *rpc_user;
 extern char *short_url;
 
 json_t *json_rpc2_call(CURL *curl, const char *url, const char *userpass, const char *rpc_req, int *curl_err, int flags);
+
+void memrev(unsigned char *p, size_t len); // Add basic Segwit support
+
 bool rpc2_login(CURL *curl);
 bool rpc2_login_decode(const json_t *val);
 bool rpc2_workio_login(CURL *curl);

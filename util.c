@@ -1,7 +1,7 @@
 /*
  * Copyright 2010 Jeff Garzik
  * Copyright 2012 Luke Dashjr
- * Copyright 2012-2014 pooler
+ * Copyright 2012-2017 pooler
  * Copyright 2017 Pieter Wuille // Add support for bech32 addresses (BIP 173)
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -668,6 +668,18 @@ err_out:
 	curl_easy_cleanup(curl);
 	return cfg;
 }
+
+// BEGIN - Add basic Segwit support
+void memrev(unsigned char *p, size_t len)
+{
+	unsigned char c, *q;
+	for (q = p + len - 1; p < q; p++, q--) {
+		c = *p;
+		*p = *q;
+		*q = c;
+	}
+}
+// END - Add basic Segwit support
 
 void bin2hex(char *s, const unsigned char *p, size_t len)
 {
