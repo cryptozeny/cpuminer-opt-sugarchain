@@ -159,6 +159,11 @@ Support for even older x86_64 without AES_NI or SSE2 is not availble.
 Change Log
 ----------
 
+v3.8.8.1.6-sugarchain
+
+Added:
+  Add basic Segwit support - fix: bech32 TXs in mempool (thanks to @okoto-xyz)
+
 v3.8.8.1.5-sugarchain
 
 Added:
