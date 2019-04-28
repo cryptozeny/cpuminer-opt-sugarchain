@@ -1,7 +1,7 @@
 /*
  * Copyright 2010 Jeff Garzik
  * Copyright 2012 Luke Dashjr
- * Copyright 2012-2014 pooler
+ * Copyright 2012-2017 pooler
  * Copyright 2017 Pieter Wuille // Add support for bech32 addresses (BIP 173)
  *
  * This program is free software; you can redistribute it and/or modify it

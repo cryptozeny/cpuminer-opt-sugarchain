@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Jeff Garzik
- * Copyright 2012-2014 pooler
+ * Copyright 2012-2017 pooler
  * Copyright 2014 Lucas Jones
  * Copyright 2014 Tanguy Pruvot
  * Copyright 2016 Jay D Dee
  * Copyright 2018 Kikyou Akino
- * Copyright 2018 cryptozeny
+ * Copyright 2018-2019 cryptozeny
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
