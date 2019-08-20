@@ -2,6 +2,7 @@
 
 # LOCAL_LIB="$HOME/usr/lib"
 LOCAL_LIB="$PWD/depends"
+RELEASE=cpuminer-opt-sugarchain-v3.8.8.1.7-w64
 
 # export LDFLAGS="-L$LOCAL_LIB/curl/lib/.libs -L$LOCAL_LIB/gmp/.libs -L$LOCAL_LIB/openssl"
 export LDFLAGS="-L$LOCAL_LIB/zlib-1.2.11 -L$LOCAL_LIB/curl-7.47.0/lib/.libs -L$LOCAL_LIB/gmp-6.1.0/.libs -L$LOCAL_LIB/openssl-1.0.2g"
@@ -17,16 +18,19 @@ sed -i 's#"-lpthread"#"-lpthreadGC2"#g' configure.ac
 YESPOWER="-Wall -O2 -fomit-frame-pointer"
 SSE2="-msse2"
 
-mkdir release
-cp README.txt release/
-# cp /usr/x86_64-w64-mingw32/lib/zlib1.dll release/
-cp $LOCAL_LIB/dll/zlib1.dll release/
-cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll release/
-cp /usr/lib/gcc/x86_64-w64-mingw32/5.3-win32/libstdc++-6.dll release/
-cp /usr/lib/gcc/x86_64-w64-mingw32/5.3-win32/libgcc_s_seh-1.dll release/
-cp $LOCAL_LIB/dll/libcrypto-1_1-x64.dll release/
-cp $LOCAL_LIB/dll/libcurl-4.dll release/
-cp $LOCAL_LIB/dll/libeay32.dll release/
+mkdir $RELEASE
+cp README.txt $RELEASE/
+# cp /usr/x86_64-w64-mingw32/lib/zlib1.dll $RELEASE/
+cp $LOCAL_LIB/dll/zlib1.dll $RELEASE/
+cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll $RELEASE/
+cp /usr/lib/gcc/x86_64-w64-mingw32/5.3-win32/libstdc++-6.dll $RELEASE/
+cp /usr/lib/gcc/x86_64-w64-mingw32/5.3-win32/libgcc_s_seh-1.dll $RELEASE/
+cp $LOCAL_LIB/dll/libcrypto-1_1-x64.dll $RELEASE/
+cp $LOCAL_LIB/dll/libcurl-4.dll $RELEASE/
+cp $LOCAL_LIB/dll/libeay32.dll $RELEASE/
+# batch for easy mining
+cp $LOCAL_LIB/bat/run*.bat $RELEASE/
+
 
 make distclean || echo clean
 rm -f config.status
@@ -35,7 +39,7 @@ rm -f config.status
 CFLAGS="$YESPOWER $SSE2 $COMMON_PATH $GMP_PATH $DLL_PATH" ./configure $F
 make -j$(nproc)
 strip -s cpuminer.exe
-mv cpuminer.exe release/cpuminer.exe
+mv cpuminer.exe $RELEASE/cpuminer.exe
 
 # make distclean || echo clean
 # rm -f config.status
@@ -43,21 +47,21 @@ mv cpuminer.exe release/cpuminer.exe
 # CFLAGS="-O3 -march=core-avx2 -msha -Wall" ./configure $F
 # make -j$(nproc)
 # strip -s cpuminer.exe
-# mv cpuminer.exe release/cpuminer-avx2-sha.exe
+# mv cpuminer.exe $RELEASE/cpuminer-avx2-sha.exe
 # 
 # make clean || echo clean
 # rm -f config.status
 # CFLAGS="-O3 -march=core-avx2 -Wall" ./configure $F 
 # make -j$(nproc)
 # strip -s cpuminer.exe
-# mv cpuminer.exe release/cpuminer-avx2.exe
+# mv cpuminer.exe $RELEASE/cpuminer-avx2.exe
 # 
 # make clean || echo clean
 # rm -f config.status
 # CFLAGS="-O3 -march=corei7-avx -Wall" ./configure $F 
 # make -j$(nproc)
 # strip -s cpuminer.exe
-# mv cpuminer.exe release/cpuminer-avx.exe
+# mv cpuminer.exe $RELEASE/cpuminer-avx.exe
 # 
 # # -march=westmere is supported in gcc5
 # make clean || echo clean
@@ -66,14 +70,14 @@ mv cpuminer.exe release/cpuminer.exe
 # #CFLAGS="-O3 -maes -msse4.2 -Wall" ./configure $F
 # make -j$(nproc)
 # strip -s cpuminer.exe
-# mv cpuminer.exe release/cpuminer-aes-sse42.exe
+# mv cpuminer.exe $RELEASE/cpuminer-aes-sse42.exe
 # 
 # make clean || echo clean
 # rm -f config.status
 # CFLAGS="-O3 -msse2 -Wall" ./configure $F
 # make -j$(nproc)
 # strip -s cpuminer.exe
-# mv cpuminer.exe release/cpuminer-sse2.exe
+# mv cpuminer.exe $RELEASE/cpuminer-sse2.exe
 # make clean || echo clean
 
 # RESTORE after build
