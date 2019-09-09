@@ -37,7 +37,7 @@ Jeff garzik, ig0tik3d, elmad, palmd, and Optiminer, with additional
 optimizations by Jay D Dee.
 
 All of the code is believed to be open and free. If anyone has a
-claim to any of it post your case in the cpuminer-opt Bitcoin Talk forum
+claim to any of the code, please post your case in the cpuminer-opt Bitcoin Talk forum
 or by email.
 
 Miner programs are often flagged as malware by antivirus programs. This is
@@ -54,10 +54,10 @@ See file RELEASE_NOTES for change log and compile instructions.
 Requirements
 ------------
 
-1. A x86_64 architecture CPU with a minimum of SSE2 support. This includes
-Intel Core2 and newer and AMD equivalents. In order to take advantage of AES_NI
-optimizations a CPU with AES_NI is required. This includes Intel Westbridge
-and newer and AMD equivalents. Further optimizations are available on some
+1. A x64 bit (x86_64) CPU with a minimum of SSE2 support. This includes
+Intel Core2 and newer, and AMD equivalents. In order to take advantage of AES_NI
+optimizations, a CPU with AES_NI is required. This includes Intel Westbridge
+and newer, and AMD equivalents. Further optimizations are available on some
 algoritms for CPUs with AVX and AVX2, Sandybridge and Haswell respectively.
 
 Older CPUs are supported by cpuminer-multi by TPruvot but at reduced
@@ -65,7 +65,7 @@ performance.
 
 ARM CPUs are not supported.
 
-2. 64 bit Linux OS. Ubuntu and Fedora based distributions, including Mint and
+2. 64 bit Linux OS: Ubuntu and Fedora based distributions, including Mint and
 Centos, are known to work and have all dependencies in their repositories.
 Others may work but may require more effort. Older versions such as Centos 6
 don't work due to missing features.
@@ -73,7 +73,7 @@ don't work due to missing features.
 
 MacOS, OSx and Android are not supported.
 
-3. Stratum pool. Some algos may work wallet mining using getwork or GBT. YMMV.
+3. Stratum pool: Some algos may work with wallet mining using getwork or GBT. YMMV.
 
 Supported Algorithms
 --------------------
@@ -166,17 +166,17 @@ Supported Algorithms
 Errata
 ------
 
-Neoscrypt crashes on Windows, use legacy version.
+- Neoscrypt crashes on Windows, please use legacy version.
 
-AMD CPUs older than Piledriver, including Athlon x2 and Phenom II x4, are not
+- AMD CPUs older than Piledriver, including Athlon x2 and Phenom II x4, are not
 supported by cpuminer-opt due to an incompatible implementation of SSE2 on
 these CPUs. Some algos may crash the miner with an invalid instruction.
 Users are recommended to use an unoptimized miner such as cpuminer-multi.
 
-cpuminer-opt does not work mining Decred algo at Nicehash and produces
+- cpuminer-opt does not work when mining with Decred algo at Nicehash and produces
 only "invalid extranonce2 size" rejects.
 
-Benchmark testing does not work for x11evo.
+- Benchmark testing does not work for x11evo.
 
 Bugs
 ----
@@ -186,9 +186,9 @@ forum at:
 
 https://bitcointalk.org/index.php?topic=1326803.0
 
-All problem reports must be accompanied by a proper definition.
-This should include how the problem occurred, the command line and
-output from the miner showing the startup and any errors.
+All bug reports must be accompanied by a proper definition.
+This should include how the problem occurred, the command line 
+output from the miner showing at startup and any errors.
 
 Donations
 ---------
