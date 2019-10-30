@@ -1,3 +1,7 @@
+cpuminer-opt-sugarchain
+=======================
+![GitHub All Releases](https://img.shields.io/github/downloads/cryptozeny/cpuminer-opt-sugarchain/total)
+
 # Install
 Tested on Ubuntu 16.04
 
