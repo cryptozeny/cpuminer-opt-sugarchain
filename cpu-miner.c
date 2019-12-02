@@ -3069,9 +3069,11 @@ static void show_credits()
         printf("     with AES_NI and AVX2 and SHA extensions.\n");
 
     if ( use_colors ) {
-        printf("     BTC donation address: "CL_CYN"31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe"CL_N"\n\n");
+        printf("     BTC donation: "CL_CYN"3Gcbpn4QU4iGibZox378VdEJvjx7Z7J7Tr"CL_N" (cryptozeny)\n");
+        printf("     SUGAR donation: "CL_CYN"sugar1qcu07vm47ceh7lec3umx7nv7e8tm8r8zw4l2uyx"CL_N" (cryptozeny)\n\n");
     } else {
-        printf("     BTC donation address: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe\n\n");
+        printf("     BTC donation address: 3Gcbpn4QU4iGibZox378VdEJvjx7Z7J7Tr (cryptozeny)\n");
+        printf("     SUGAR donation: sugar1qcu07vm47ceh7lec3umx7nv7e8tm8r8zw4l2uyx (cryptozeny)\n\n");
     }
 }
 
