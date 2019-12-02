@@ -34,5 +34,5 @@ cpuminer-avx2-sha.exe  "-march=core-avx2 -msha"  Ryzen
 
 If you like this software feel free to donate:
 
-BTC: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe  
+BTC: 3Gcbpn4QU4iGibZox378VdEJvjx7Z7J7Tr  
 ETH: 0x4c496e75bba93e084f54c56fd628539a8de7eba8  

@@ -199,7 +199,7 @@ Donations
 
 cpuminer-opt-sugarchain has no fees of any kind but donations are accepted.
 
- BTC: 31hMrody48EpQF4ZH3eFEd7CMJLPPCBHSe  
+ BTC: 3Gcbpn4QU4iGibZox378VdEJvjx7Z7J7Tr  
  ETH: 0x4c496e75bba93e084f54c56fd628539a8de7eba8  
 
 Happy mining!
