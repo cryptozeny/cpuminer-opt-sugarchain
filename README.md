@@ -3,7 +3,12 @@ cpuminer-opt-sugarchain
 ![GitHub All Releases](https://img.shields.io/github/downloads/cryptozeny/cpuminer-opt-sugarchain/total)
 
 # Install
-Tested on Ubuntu 16.04
+Works on:
+- Ubuntu 16.04 
+- Devuan 2.1
+
+Doesn't work on: 
+- Ubuntu 20.04
 
 ```bash
 sudo apt-get install -y \
@@ -19,12 +24,12 @@ All address format (legacy, p2sh-segwit and ___bech32___) supported.
 
  * Mining Pool - `-t1` using 1 thread.
 ```
-./cpuminer -a yespower -o stratum+tcp://1pool-testnet.cryptozeny.com:3333 -u tugar1qt9tcmdq7w002j8rw78h8nraj382ptqh7fe83f8 -t1
+./cpuminer -a yespower -o stratum+tcp://1pool-testnet.cryptozeny.com:3333 -u sugar1qnd3mamq6e7wsrml40ve95h3y3l9u9sq7gj0fc0.$HOSTNAME -t$(nproc)
 ```
 
  * Solo - `44229` is testnet. `-u` and `-p` is on the coind. (adding `--no-longpoll` for displaying correct net_diff)
 ```
-./cpuminer -a yespower -o http://localhost:44229 --no-longpoll -u rpcuser -p rpcpassword --coinbase-addr=tugar1qt9tcmdq7w002j8rw78h8nraj382ptqh7fe83f8 -t1
+./cpuminer -a yespower -o http://localhost:44229 --no-longpoll -u rpcuser -p rpcpassword --coinbase-addr=tugar1qt9tcmdq7w002j8rw78h8nraj382ptqh7fe83f8 -t$(nproc)
 ```
 
  * Screenshot
