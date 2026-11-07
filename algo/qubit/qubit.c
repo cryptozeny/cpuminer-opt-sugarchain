@@ -79,7 +79,9 @@ void qubit_hash(void *output, const void *input)
                      (const BitSequence *) hash, 512 );
 #endif
 
-        asm volatile ("emms");
+        #if defined(__x86_64__) || defined(__i386__)
+	asm volatile ("emms");
+#endif
         memcpy(output, hash, 32);
 }
 

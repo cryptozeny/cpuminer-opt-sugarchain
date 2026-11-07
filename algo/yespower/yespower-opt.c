@@ -42,6 +42,13 @@
 #define _YESPOWER_OPT_C_PASS_ 1
 #endif
 
+/* NEB_ARM_SSE2_SHIM: on arm64 the SSE2 code path below is used through sse2neon, which maps the x86 intrinsics onto
+ * NEON. The path is otherwise selected by the compiler's __SSE2__/__SSE__ macros, which arm64 never defines. */
+#if !defined(__SSE2__) && (defined(__aarch64__) || defined(__arm64__))
+#define __SSE2__ 1
+#define __SSE__ 1
+#endif
+
 #if _YESPOWER_OPT_C_PASS_ == 1
 /*
  * AVX and especially XOP speed up Salsa20 a lot, but needlessly result in

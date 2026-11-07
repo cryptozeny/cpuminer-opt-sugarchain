@@ -1,6 +1,11 @@
 #include <memory.h>
 #include <stdlib.h>
 
+#if defined(__APPLE__)
+#include <pthread.h>
+#include "pthread_barrier.h"
+#endif
+
 #include "hodl-gate.h"
 #include "hodl-wolf.h"
 

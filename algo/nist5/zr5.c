@@ -140,7 +140,9 @@ static const int arrOrder[][4] =
            break;
        }
     }
+#if defined(__x86_64__) || defined(__i386__)
 	asm volatile ("emms");
+#endif
 	memcpy(state, hash, 32);
 }
 
