@@ -168,7 +168,9 @@ void quark_hash(void *state, const void *input)
  }
  
 
-//    asm volatile ("emms");
+//    #if defined(__x86_64__) || defined(__i386__)
+	asm volatile ("emms");
+#endif
   memcpy(state, hash, 32);
 }
 

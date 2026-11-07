@@ -182,7 +182,9 @@ void x15hash(void *output, const void *input)
 	sph_whirlpool_close(&ctx.whirlpool, hashB);
 
 
-        asm volatile ("emms");
+        #if defined(__x86_64__) || defined(__i386__)
+	asm volatile ("emms");
+#endif
 	memcpy(output, hashB, 32);
 }
 

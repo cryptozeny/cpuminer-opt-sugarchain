@@ -14,6 +14,32 @@ cd cpuminer-opt-sugarchain && \
 ./cpuminer --cputest
 ```
 
+# macOS on Apple silicon (arm64)
+
+The build scripts of this tree are written for x86-64 with SSE/AVX assembly. A native arm64 build is provided by
+`build-macos.sh`, which compiles a yespower-only miner and needs no Xcode: the Command Line Tools, `openssl@3` and
+`gmp` from Homebrew are enough.
+
+```sh
+brew install automake libtool pkg-config openssl@3 gmp
+./build-macos.sh
+./cpuminer-macos -a yespower -o stratum+tcp://stratum.poolab.org:8451 -u sugar1q... -p x -t 8
+./cpuminer-macos -a yespower --benchmark -t 1      # throughput of one thread
+```
+
+How it works:
+
+- `compat-arm/` holds the portability shims: `immintrin.h`, `emmintrin.h` and the other x86 intrinsic headers include
+  `sse2neon.h`, which maps the SSE intrinsics onto NEON, and `pthread_barrier.h` provides the barrier that macOS lacks.
+- `algo/yespower/yespower-opt.c` enables its SIMD path on arm64 through the same shim, which doubles the rate of one
+  thread.
+- `sysinfos.c` and `cpu-miner.c` skip the x86 `cpuid` feature probe, which does not exist on arm64 and used to make the
+  miner refuse to start.
+- The x86 `emms` instructions and the 64-byte alignment of `blake2s_state` are guarded, and `-DYESPOWER_ONLY` compiles
+  only the yespower family, so the algorithms that are x86-only are not built.
+
+Measured on a Mac mini M4 Pro (12 cores, macOS 26): 342 H/s on one thread, 1.5 kH/s on 8 threads.
+
 # Run
 All address format (legacy, p2sh-segwit and ___bech32___) supported.
 

@@ -3175,12 +3175,15 @@ bool check_cpu_capability ()
      }
      printf("\n");
 
-     // Check for CPU and build incompatibilities
+     // Check for CPU and build incompatibilities. On arm64 the SSE2 path comes from sse2neon, so the x86 CPUID probe
+     // has nothing to report and its answer is not a reason to refuse to start.
+#if !defined(__aarch64__) && !defined(__arm64__)
      if ( !cpu_has_sse2 )
      {
         printf( "A CPU with SSE2 is required to use cpuminer-opt\n" );
         return false;
      }
+#endif
      if ( sw_has_avx2 && !( cpu_has_avx2 && cpu_has_aes ) )
      {
         printf( "The SW build requires a CPU with AES and AVX2!\n" );

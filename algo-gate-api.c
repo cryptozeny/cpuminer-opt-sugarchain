@@ -155,8 +155,17 @@ bool register_algo_gate( int algo, algo_gate_t *gate )
 
    init_algo_gate( gate );
 
-   switch (algo)
-   {
+#ifdef YESPOWER_ONLY
+  // Minimal build (macOS on Apple silicon): only the yespower family is compiled in.
+  switch (algo) {
+     case ALGO_YESPOWER:    register_yespower_algo    ( gate ); break;
+     case ALGO_YESPOWERR8:  register_yespowerr8_algo  ( gate ); break;
+     case ALGO_YESPOWERR16: register_yespowerr16_algo ( gate ); break;
+     case ALGO_YESPOWERR24: register_yespowerr24_algo ( gate ); break;
+     case ALGO_YESPOWERR32: register_yespowerr32_algo ( gate ); break;
+     default: break;
+  }
+#else
      case ALGO_ALLIUM:       register_allium_algo       ( gate ); break;
      case ALGO_ANIME:        register_anime_algo        ( gate ); break;
      case ALGO_ARGON2:       register_argon2_algo       ( gate ); break;
@@ -244,6 +253,7 @@ bool register_algo_gate( int algo, algo_gate_t *gate )
         applog(LOG_ERR,"FAIL: algo_gate registration failed, unknown algo %s.\n", algo_names[opt_algo] );
         return false;
    } // switch
+#endif
 
   // ensure required functions were defined.
   if (  gate->scanhash == (void*)&null_scanhash )

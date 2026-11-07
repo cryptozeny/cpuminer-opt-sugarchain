@@ -49,7 +49,13 @@
 // needed.
 
 #include <inttypes.h>
+#if defined(__x86_64__) || defined(__i386__)
 #include <immintrin.h>
+#else
+#include <mm_malloc.h>
+#define SSE2NEON_ALLOC_DEFINED 1
+#include "sse2neon.h"
+#endif
 #include <memory.h>
 #include <stdbool.h>
 

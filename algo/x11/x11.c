@@ -107,7 +107,9 @@ void x11_hash( void *state, const void *input )
      KEC_U;
      KEC_C;
 
-//   asm volatile ("emms");
+//   #if defined(__x86_64__) || defined(__i386__)
+	asm volatile ("emms");
+#endif
 
      update_luffa( &ctx.luffa, (const BitSequence*)hash, 64 );
      final_luffa( &ctx.luffa, (BitSequence*)hash+64 );
@@ -129,7 +131,9 @@ void x11_hash( void *state, const void *input )
      final_echo( &ctx.echo, (BitSequence *) hash+64 );
 #endif
 
-//        asm volatile ("emms");
+//        #if defined(__x86_64__) || defined(__i386__)
+	asm volatile ("emms");
+#endif
      memcpy( state, hash+64, 32 );
 }
 
